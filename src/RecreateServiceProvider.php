@@ -7,9 +7,6 @@ use Illuminate\Support\ServiceProvider;
 class RecreateServiceProvider extends ServiceProvider
 {
     protected $defer    = true;
-    protected $commands = [
-        \Huangdijia\Migrate\Commands\RecreateCommand::class,
-    ];
 
     public function boot()
     {
@@ -21,7 +18,9 @@ class RecreateServiceProvider extends ServiceProvider
         $this->app->singleton('migrate.foo', function () {
             return new FooService;
         });
-        $this->commands($this->commands);
+        $this->commands([
+            Commands\RecreateCommand::class
+        ]);
     }
 
     public function provides()

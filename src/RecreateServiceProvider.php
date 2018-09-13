@@ -8,7 +8,7 @@ class RecreateServiceProvider extends ServiceProvider
 {
     protected $defer    = true;
     protected $commands = [
-        Commands\RecreateCommand::class,
+        \Huangdijia\Migrate\Commands\RecreateCommand::class,
     ];
 
     public function boot()
@@ -18,11 +18,16 @@ class RecreateServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->singleton('migrate.foo', function () {
+            return new FooService;
+        });
         $this->commands($this->commands);
     }
 
     public function provides()
     {
-        return [];
+        return [
+            'migrate.foo'
+        ];
     }
 }

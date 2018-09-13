@@ -15,9 +15,9 @@ class RecreateServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton('migrate.foo', function () {
-            return new FooService;
-        });
+        // $this->app->singleton('migrate.foo', function () {
+        //     return new FooService;
+        // });
         $this->commands([
             Commands\RecreateCommand::class
         ]);
@@ -26,7 +26,7 @@ class RecreateServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'migrate.foo'
+            // 'migrate.foo'
         ];
     }
 }

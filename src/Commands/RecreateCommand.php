@@ -40,8 +40,8 @@ class RecreateCommand extends Command
     public function handle()
     {
         $yes = $this->option('yes');
-        if (!$yes && !$this->confirm('Are you sure?', false)) {
-            $this->info('Alright');
+        if (!$yes && !$this->confirm('Are you sure you want to do this?', false)) {
+            $this->info('Bye bye ^_^');
             return false;
         }
 

@@ -1,11 +1,17 @@
 # laravel-migrate-recreate
 
+Rebuild table
+
 ## Usage
 
 ### Single
 
-> php artisan migrate:recreate users
+~~~php
+php artisan migrate:recreate users
+~~~
 
 ### Multi
 
-> php artisan migrate:recreate users another_tables
+~~~php
+php artisan migrate:recreate users another_tables
+~~~

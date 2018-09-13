@@ -2,6 +2,12 @@
 
 Rebuild table
 
+## Install
+
+~~~bash
+composer require huangdijia/laravel-migrate-recreate
+~~~
+
 ## Usage
 
 ### Single

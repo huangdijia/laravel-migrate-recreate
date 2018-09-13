@@ -30,7 +30,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Huangdijia\\Ipip\\IpipServiceProvider"
+                "Huangdijia\\Migrate\\RecreateServiceProvider"
             ]
         }
     }

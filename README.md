@@ -15,3 +15,9 @@ php artisan migrate:recreate users
 ~~~php
 php artisan migrate:recreate users another_tables
 ~~~
+
+### All
+
+~~~php
+php artisan migrate:recreate-all
+~~~

@@ -50,8 +50,8 @@ class RecreateAllCommand extends Command
                 $this->warn($tables->count() . ' tables will recreate now');
             })
             ->each(function ($item) {
-                $this->info('Recreating ' . $table);
                 $table = self::getTable($item->migration);
+                $this->info('Recreating ' . $table);
                 if (!$table) {
                     return;
                 }

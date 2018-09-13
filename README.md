@@ -10,6 +10,7 @@ Rebuild table
 php artisan migrate:recreate users
 ~~~
 
+Output:
 
 ~~~bash
 Recreate beginning

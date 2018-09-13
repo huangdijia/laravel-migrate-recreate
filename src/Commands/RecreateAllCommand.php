@@ -56,7 +56,7 @@ class RecreateAllCommand extends Command
                     return;
                 }
 
-                $this->call('migrate:recreate', [$table, '-y']);
+                $this->call('migrate:recreate', ['table' => $table, '-y' => true]);
             })
             ->tap(function () {
                 $this->info('Okey');

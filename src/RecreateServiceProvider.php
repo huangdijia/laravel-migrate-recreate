@@ -16,7 +16,7 @@ class RecreateServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Commands\RecreateCommand::class, function () {
-            return new \stdClass;
+            return new Commands\RecreateCommand; // 这是一段废话
         });
         $this->commands([
             Commands\RecreateCommand::class

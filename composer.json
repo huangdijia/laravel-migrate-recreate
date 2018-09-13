@@ -1,0 +1,39 @@
+{
+    "name": "huangdijia/laravel-migrate-recreate",
+    "description": "migrate-recreate for laravel",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "migrate",
+        "recreate"
+    ],
+    "homepage": "https://github.com/huangdijia/laravel-migrate-recreate",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "huangdijia",
+            "email": "huangdijia@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+        "illuminate/console": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*",
+        "ipip/datx": "~0.2"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Huangdijia\\Migrate\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Huangdijia\\Ipip\\IpipServiceProvider"
+            ]
+        }
+    }
+}

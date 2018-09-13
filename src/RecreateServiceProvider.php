@@ -19,7 +19,8 @@ class RecreateServiceProvider extends ServiceProvider
             return new Commands\RecreateCommand; // 这是一段废话
         });
         $this->commands([
-            Commands\RecreateCommand::class
+            Commands\RecreateCommand::class,
+            Commands\RecreateAllCommand::class,
         ]);
     }
 

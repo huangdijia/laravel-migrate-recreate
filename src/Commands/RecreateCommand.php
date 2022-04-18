@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of huangdijia/laravel-migrate-recreate.
+ *
+ * @link     https://github.com/huangdijia/laravel-migrate-recreate
+ * @document https://github.com/huangdijia/laravel-migrate-recreate/blob/2.x/README.md
+ * @contact  huangdijia@gmail.com
+ */
 namespace Huangdijia\Migrate\Commands;
 
 use Illuminate\Console\Command;
@@ -24,8 +32,6 @@ class RecreateCommand extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -40,7 +46,7 @@ class RecreateCommand extends Command
     public function handle()
     {
         $yes = $this->option('yes');
-        if (!$yes && !$this->confirm('Are you sure you want to do this?', false)) {
+        if (! $yes && ! $this->confirm('Are you sure you want to do this?', false)) {
             $this->info('Bye bye ^_^');
             return false;
         }
@@ -75,17 +81,18 @@ class RecreateCommand extends Command
             $this->info('Migrating');
             $this->call('migrate');
         })->each(function ($table) {
+            $backup = null;
             try {
                 $backup = self::backupTableName($table);
                 // get columns of table
                 $this->info('Analyzing ' . $table . ' and ' . $backup . ' table structure');
-                $newColumns  = Schema::getColumnListing($table);
-                $bakColumns  = Schema::getColumnListing($backup);
-                $columns     = array_intersect($bakColumns, $newColumns);
+                $newColumns = Schema::getColumnListing($table);
+                $bakColumns = Schema::getColumnListing($backup);
+                $columns = array_intersect($bakColumns, $newColumns);
                 $loseColumns = array_diff($bakColumns, $newColumns);
 
                 // restore data from backup table
-                if (!empty($columns)) {
+                if (! empty($columns)) {
                     $this->info('Restoring data from ' . $backup);
                     if ($loseColumns) {
                         $this->warn('Fields of ' . self::columnsToString($loseColumns) . ' will be abandoned');

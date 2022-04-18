@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of huangdijia/laravel-migrate-recreate.
+ *
+ * @link     https://github.com/huangdijia/laravel-migrate-recreate
+ * @document https://github.com/huangdijia/laravel-migrate-recreate/blob/2.x/README.md
+ * @contact  huangdijia@gmail.com
+ */
 namespace Huangdijia\Migrate\Commands;
 
 use Illuminate\Console\Command;
@@ -23,8 +31,6 @@ class RecreateAllCommand extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -39,7 +45,7 @@ class RecreateAllCommand extends Command
     public function handle()
     {
         $yes = $this->option('yes');
-        if (!$yes && !$this->confirm('Are you sure you want to do this?', false)) {
+        if (! $yes && ! $this->confirm('Are you sure you want to do this?', false)) {
             $this->info('Bye bye ^_^');
             return false;
         }
@@ -52,7 +58,7 @@ class RecreateAllCommand extends Command
             ->each(function ($item) {
                 $table = self::getTable($item->migration);
                 $this->info('Recreating ' . $table);
-                if (!$table) {
+                if (! $table) {
                     return;
                 }
 

@@ -10,6 +10,7 @@ declare(strict_types=1);
  */
 namespace Huangdijia\Migrate\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -69,7 +70,7 @@ class RecreateCommand extends Command
                 Schema::dropIfExists($backup);
                 $this->info('Renaming ' . $table . ' to ' . $backup);
                 Schema::rename($table, $backup);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->warn('Renamed faild, error: ' . $e->getMessage());
                 $this->info('Deleting ' . $table);
                 Schema::dropIfExists($table);
@@ -107,7 +108,7 @@ class RecreateCommand extends Command
                     );
                     DB::statement($sql);
                 }
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->warn('Restored faild, error: ' . $e->getMessage());
             }
             // remove backup

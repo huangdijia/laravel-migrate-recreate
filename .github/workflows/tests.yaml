@@ -29,6 +29,9 @@ jobs:
         run: |
           composer require "laravel/framework:^${{ matrix.laravel }}" --no-update
           composer update --prefer-dist --no-interaction --no-progress
+      - name: Check Code Style
+        run: |
+          composer cs-fix
       - name: Run Analyse
         run: |
           composer analyse src
